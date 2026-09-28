@@ -8,14 +8,6 @@
 
 class CG26W03MFCDoc : public CDocument
 {
-	//protected:
-	//	CPoint Point = CPoint(-100, -100);
-	//public:
-	//	CPoint GetPoint() { return Point; }
-	//	void SetPoint(CPoint p) { 
-	//		Point = p; 
-	//		SetModifiedFlag();
-	//	}
 
 protected:
 	CArray<CPoint, CPoint> Points;
@@ -27,6 +19,12 @@ public:
 	void AddPoint(CPoint p) {
 		Points.Add(p);
 		SetModifiedFlag();
+	}
+	void RemoveLast() {
+		if (Points.GetCount() > 0) {
+			Points.RemoveAt(Points.GetCount() - 1);
+			SetModifiedFlag();
+		}
 	}
 protected: // serialization에서만 만들어집니다.
 	CG26W03MFCDoc() noexcept;
